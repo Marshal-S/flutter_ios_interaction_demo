@@ -1,0 +1,12 @@
+
+设置提前编译 flutter文件
+在 xcode中先关闭 bitcode，然后 build phases中添加run script为下面所示
+
+"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh" build
+"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh" embed
+
+//如果上面路径一直报错，可能是环境问题（如果环境也没问题，那么直接使用绝对路径）
+例如：我将flutter sdk放到了默认路径下，这个 $FLUTTER_ROOT代表的就是flutter安装路径
+
+"/Users/用户名/flutter/packages/flutter_tools/bin/xcode_backend.sh" build
+"$/Users/用户名/flutter/packages/flutter_tools/bin/xcode_backend.sh" embed

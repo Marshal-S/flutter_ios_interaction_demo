@@ -1,0 +1,25 @@
+# Uncomment the next line to define a global platform for your project
+#platform :ios, '9.0'
+#
+#target 'FlutterObjcDemo' do
+#  use_frameworks!
+#
+#  flutter_application_path = '../flutter_module/'
+#  load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
+#  install_all_flutter_pods(flutter_application_path)
+#
+#end
+
+platform :ios, '9.0'
+
+target 'FlutterObjcDemo' do
+  use_frameworks!
+
+  flutter_application_path = '../flutter_module/'
+  load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
+  install_all_flutter_pods(flutter_application_path)
+  
+  #  下面这个也可以
+  # eval(File.read(File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')), binding)
+
+end

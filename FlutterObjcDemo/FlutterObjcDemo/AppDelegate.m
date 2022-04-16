@@ -6,10 +6,10 @@
 //
 
 #import "AppDelegate.h"
-#import <Flutter/Flutter.h>
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) FlutterMethodChannel *methodChannel;
 
 @end
 
@@ -21,22 +21,25 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    FlutterViewController *vc = [[FlutterViewController alloc] initWithProject:nil initialRoute:@"one" nibName:nil bundle:nil];;
+    FlutterViewController *vc = [[FlutterViewController alloc] initWithProject:nil initialRoute:@"one" nibName:nil bundle:nil];
     
     self.window.rootViewController = vc;
     
     [self.window makeKeyAndVisible];
     
-    FlutterMethodChannel * methodChannel =  [FlutterMethodChannel methodChannelWithName:@"one_page" binaryMessenger:vc];
+    self.methodChannel =  [FlutterMethodChannel methodChannelWithName:@"one_page" binaryMessenger:vc];
     
-    [methodChannel invokeMethod:@"one" arguments:nil];
-    
-    //监听退出
-    [methodChannel setMethodCallHandler:^(FlutterMethodCall * _Nonnull call, FlutterResult  _Nonnull result) {
-        NSLog(@"ios回调 %@ -- %@", call.method, call.arguments);
+    [self.methodChannel invokeMethod:@"one" arguments:nil result:^(id  _Nullable result) {
+        
     }];
     
-    return YES;
+    //监听退出
+    [self.methodChannel setMethodCallHandler:^(FlutterMethodCall * _Nonnull call, FlutterResult  _Nonnull result) {
+        NSLog(@"ios回调 %@ -- %@", call.method, call.arguments);
+        //如果交互过程出现了问题，可以调用 result回调，将内容回调给 flutter端
+    }];
+    
+    return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 

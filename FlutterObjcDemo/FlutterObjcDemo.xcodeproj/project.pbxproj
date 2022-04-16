@@ -162,11 +162,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66845B6428093E7F006C14E9 /* Build configuration list for PBXNativeTarget "FlutterObjcDemo" */;
 			buildPhases = (
-				CA667D377E00A03B6B4D1B0A /* [CP] Check Pods Manifest.lock */,
 				66845B6F280968A3006C14E9 /* ShellScript */,
+				CA667D377E00A03B6B4D1B0A /* [CP] Check Pods Manifest.lock */,
+				011017A9D5E24BD1BF422499 /* [CP-User] Run Flutter Build flutter_module Script */,
 				66845B3128093E7D006C14E9 /* Sources */,
 				66845B3228093E7D006C14E9 /* Frameworks */,
 				66845B3328093E7D006C14E9 /* Resources */,
+				906A67F4620E9A9C8C0EFCB0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -283,6 +285,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		011017A9D5E24BD1BF422499 /* [CP-User] Run Flutter Build flutter_module Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Run Flutter Build flutter_module Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../flutter_module/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
+		};
 		66845B6F280968A3006C14E9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,7 +310,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"/Users/shuaishuai/flutter/packages/flutter_tools/bin/xcode_backend.sh\" build\n\"/Users/shuaishuai/flutter/packages/flutter_tools/bin/xcode_backend.sh\" embed\n";
+			shellScript = "\"/Users/lishuai/flutter/packages/flutter_tools/bin/xcode_backend.sh\" build\n\"/Users/lishuai/flutter/packages/flutter_tools/bin/xcode_backend.sh\" embed\n";
+		};
+		906A67F4620E9A9C8C0EFCB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlutterObjcDemo/Pods-FlutterObjcDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlutterObjcDemo/Pods-FlutterObjcDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlutterObjcDemo/Pods-FlutterObjcDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		CA667D377E00A03B6B4D1B0A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -54,13 +54,16 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   int _counter = 0;
   final MethodChannel _channel = const MethodChannel("one_page");
 
   @override
   void initState() {
+    //监听声明周期
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
+
     _channel.setMethodCallHandler((MethodCall call) {
       print(call.method);
       print(call.arguments);
@@ -68,6 +71,26 @@ class _MyHomePageState extends State<MyHomePage> {
       _channel.invokeMethod("哈哈", 10000);
       return Future(() => null); //给一个空Future
     });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      print("app进入前台");
+    } else if (state == AppLifecycleState.inactive) {
+      print("app在前台但不响应事件，比如电话，touch id等");
+    } else if (state == AppLifecycleState.paused) {
+      print("app进入后台");
+    } else if (state == AppLifecycleState.detached) {
+      print("没有宿主视图但是flutter引擎仍然有效");
+    }
   }
 
   void _incrementCounter() {

@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Flutter/Flutter.h>
 
 @interface AppDelegate ()
 
@@ -39,7 +40,7 @@
         //如果交互过程出现了问题，可以调用 result回调，将内容回调给 flutter端
     }];
     
-    return [super application:application didFinishLaunchingWithOptions:launchOptions];
+    return YES;
 }
 
 

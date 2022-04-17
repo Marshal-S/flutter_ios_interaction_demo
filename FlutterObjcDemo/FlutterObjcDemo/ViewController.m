@@ -2,11 +2,10 @@
 //  ViewController.m
 //  FlutterObjcDemo
 //
-//  Created by Marshal on 2022/4/15.
+//  Created by 李帅 on 2022/4/17.
 //
 
 #import "ViewController.h"
-#import <Flutter/Flutter.h>
 
 @interface ViewController ()
 
@@ -16,8 +15,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     // Do any additional setup after loading the view.
 }
 
